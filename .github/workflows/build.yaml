@@ -1,0 +1,22 @@
+name: my-app build
+run-name: ${{ github. actor }} has been added new commit.
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout source code
+        uses: actions/checkout@v3
+      - name: use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+      - name: install dependencies
+        run: npm ci
+      - name: build
+        run: npm run build
